@@ -1,24 +1,5 @@
-<h2>Category</h2>
-<p><%= @message.category2 %></p>
-<h2>Contents</h2>
-<p><%= @message.body %></p>
-
-<div class="answer answer-default">
-  <div class="answer-heading">
-    all answers
-  </div>
-  
-  <div class="answer-body">
-    <% @messages.each do |message| %>
-      <span class="label label-info"><%= message.name %></span>
-      <%= message.answer %>
-      <br>
-    <% end %>
-  </div>
-</div>
-
-<%= form_for(@message) do |f| %>
-<% if @message.errors.present? %>
+<%= form_answer_for(@message) do |f| %>
+  <% if @message.errors.present? %>
     <div class="alert alert-danger">
       <%= alert %>
       <ul>

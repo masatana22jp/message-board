@@ -39,6 +39,7 @@ class MessagesController < ApplicationController
   
     
   def show
+    @messages = Message.all
     @message = Message.find(params[:id])
   end
   
