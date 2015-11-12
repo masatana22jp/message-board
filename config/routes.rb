@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
+
   root 'messages#index'
   resources :messages , except: [:new]
+  resources :answers , except: [:new]
 
   #get 'messages/:id' => 'messages#show', as:'message'
 
