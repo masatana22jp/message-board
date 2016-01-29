@@ -1,4 +1,7 @@
 class Message < ActiveRecord::Base
+    
+    has_many :answers
+    belongs_to :user
     # 名前は必須入力かつ20文字以内
     validates :name , length: {  maximum: 20 } , presence: true
     validates :age , numericality: {
@@ -7,4 +10,5 @@ class Message < ActiveRecord::Base
 
     # 内容は必須入力かつ2文字以上30文字以下
     validates :body , length: {minimum: 2 , maximum: 140 } , presence: true
+    
 end

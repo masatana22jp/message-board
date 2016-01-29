@@ -3,6 +3,7 @@ class AnswersController < ApplicationController
   def index
     @answers = Answer.all
     @answer = Answer.new
+    @message = Message.find(params[:id])
   end
   
   def create
@@ -34,6 +35,8 @@ class AnswersController < ApplicationController
   
     
   def show
+    @message = Message.find(params[:id])
+    @answer = @message.answers.new(answer_params)
     @answer = Answer.find(params[:id])
   end
   

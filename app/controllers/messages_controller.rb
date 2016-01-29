@@ -40,14 +40,14 @@ class MessagesController < ApplicationController
     
   def show
     @message = Message.find(params[:id])
-    @answers = Answer.all
+    @answers = @message.answers
     @answer = Answer.new
   end
   
 
   private
   def message_params
-    params.require(:message).permit(:name, :age, :body)
+    params.require(:message).permit(:name, :age, :area, :category, :body)
   end
   ## ここまで
   

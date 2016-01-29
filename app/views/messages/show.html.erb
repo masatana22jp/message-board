@@ -1,36 +1,48 @@
-<h2>Category</h2>
-<p><%= @message.category %></p>
-<h2>Contents</h2>
-<p><%= @message.body %></p>
-
-<div class="answer answer-default">
-  <div class="answer-heading">
-    all answers
-  </div>
-  
-  <div class="answer-body">
-    <% @answers.each do |answer| %>
-      <span class="label label-info"><%= answer.name %></span>
-      <%= answer.body %>
+<div class="panel panel-danger">
+    <div class="panel-heading">
+      <span class="label label-info"><%= @message.name %></span>
+      <span class="label label-default"><%= @message.age %></span>
+      </div>
+      <div class="panel-body">
+      <span class="label label-warning"><%= @message.category %></span>
+      <%= @message.body %>
       <br>
+      </div>
+      </div>
+
+
+    <% if @message.answers.any? %>
+    <% @answers.each do |answer| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <%= answer.name %>
+        </div>
+         <div class="panel-body">
+      <%= answer.body %>
+      </div>
+      </div>
     <% end %>
-  </div>
-</div>
+    <% end %>
+
+
 <%= form_for(@answer) do |f| %>
   <% if @answer.errors.present? %>
     <div class="alert alert-danger">
       <%= alert %>
       <ul>
-        <% @answer.errors.full_messages.each do |full_message| %>
+        <% @answer.errors.answers.each do |answers| %>
           <li>
-            <%= full_message %>
+            <%= answers %>
           </li>
-        <% end %> 
+        <% end %>
       </ul>
     </div>
   <% end %>
 
 <div class="form-group">
+  
+  <%= f.hidden_field :message_id, :value => "message.id" %>
+  
   <span class="col-sm-2" id="basic-addon1">Name</span>
   <div class="col-sm-10" aria-describedby="basic-addon1">
   <%= f.text_field :name , placeholder: "Pepper", class: "form-control" %>

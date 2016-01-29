@@ -1,21 +1,25 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    メッセージ一覧
-  </div>
 
-  <div class="panel-body">
+
     <% @messages.each do |message| %>
+    <div class="panel panel-danger">
+    <div class="panel-heading">
       <span class="label label-info"><%= message.name %></span>
       <span class="label label-default"><%= message.age %></span>
+      </div>
+      <div class="panel-body">
+      <span class="label label-warning"><%= message.category %></span>
       <%= message.body %>
        (<%= link_to "edit" , edit_message_path(message) %>
          <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
          <%= link_to "answer" , message_path(message.id) %>
         )
       <br>
+      </div>
+      </div>
     <% end %>
-  </div>
-</div>
+    <br>
+  
+
 
 <% #部分テンプレートを読み込んでいる %>
 <%= render 'form' %>

@@ -1,3 +1,15 @@
+<div class="panel panel-danger">
+    <div class="panel-heading">
+      <span class="label label-info"><%= @message.name %></span>
+      <span class="label label-default"><%= @message.age %></span>
+      </div>
+      <div class="panel-body">
+      <span class="label label-warning"><%= @message.category %></span>
+      <%= @message.body %>
+      <br>
+      </div>
+      </div>
+
 <div class="answer answer-default">
   <div class="answer-heading">
     all answers
@@ -11,6 +23,8 @@
     <% end %>
   </div>
 </div>
+   
+
 <%= form_for(@answer) do |f| %>
   <% if @answer.errors.present? %>
     <div class="alert alert-danger">
